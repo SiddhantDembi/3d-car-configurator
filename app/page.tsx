@@ -3,8 +3,6 @@ import Configurator from "@/components/Configurator";
 import Experience from "@/components/Experience";
 import { CustomizationProvider } from "@/contexts/Customization";
 import { Canvas } from "@react-three/fiber";
-import Image from "next/image";
-
 
 export default function Home() {
   return (

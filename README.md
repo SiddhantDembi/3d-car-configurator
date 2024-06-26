@@ -2,7 +2,7 @@
 
 
 ## Overview
-This project is a React and Threejs based car customization application that allows users to customize various aspects of a car, such as body color, seat color, interior color, glass type, steering wheel color, tire color, backlight color, and tailwing color. All the changes will be rendered live on the 3D model.
+This project is a Nextjs and Threejs based car customization application that allows users to customize various aspects of a car, such as body color, seat color, interior color, glass type, steering wheel color, tire color, backlight color, and tailwing color. All the changes will be rendered live on the 3D model.
 
 ## Set Up
 
@@ -24,20 +24,6 @@ npm install
 Start the project
 ````bash
 npm start
-````
-
-Setup using docker
-
-````bash
-https://hub.docker.com/r/siddhantdembi/carapp
-````
-
-````bash
-docker pull siddhantdembi/carapp:v1.0
-````
-
-````bash
-docker run -p 3000:3000 siddhantdembi/carapp:v1.0
 ````
 
 ## Features

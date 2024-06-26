@@ -1,4 +1,3 @@
-'use client';
 import React from "react";
 import { useCustomization } from "../contexts/Customization";
 import tireImage from "../public/assets/tire.png";
