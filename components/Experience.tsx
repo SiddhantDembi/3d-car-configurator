@@ -1,6 +1,5 @@
 import { PresentationControls, Environment, Lightformer } from "@react-three/drei";
 import Car from "./Car";
-import "../styles.css";
 
 const Experience = () => {
   return (

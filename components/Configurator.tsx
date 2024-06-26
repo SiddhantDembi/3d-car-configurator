@@ -6,7 +6,7 @@ import tailImage from "../public/assets/tail.png";
 import notailImage from "../public/assets/notail.png";
 import brake1Image from "../public/assets/brake1.png";
 import brake2Image from "../public/assets/brake2.png";
-import "../styles.css";
+import "../app/globals.css";
 
 const Configurator: React.FC = () => {
   const { 
