@@ -6,13 +6,12 @@ import tailImage from "../public/assets/tail.png";
 import notailImage from "../public/assets/notail.png";
 import brake1Image from "../public/assets/brake1.png";
 import brake2Image from "../public/assets/brake2.png";
-import "../app/globals.css";
 
 const Configurator: React.FC = () => {
-  const { 
+  const {
     carColors,
     steeringColors,
-    glassColors, 
+    glassColors,
     wheelColors,
     backlightColors,
     bodyColor, setBodyColor,
@@ -29,194 +28,211 @@ const Configurator: React.FC = () => {
   } = useCustomization();
 
   const handleColorClick = (
-    colorSetter: React.Dispatch<React.SetStateAction<{ color: string; name: string }>>, 
+    colorSetter: React.Dispatch<React.SetStateAction<{ color: string; name: string }>>,
     color: { color: string; name: string }
   ) => {
     colorSetter(color);
   };
 
   return (
-    <div className="configurator">
-      <div className="configurator__section">
-        <div className="configurator__section__title">Body Color</div>
-        <div className="configurator__section__values">
-          {carColors.map((item, index) => (
+    <div className="fixed right-0 bottom-[10vh] w-[400px] p-6 flex flex-col gap-4 max-h-[83vh] overflow-y-auto">
+
+      <div className="uppercase font-bold font-poppins text-black">Body Color</div>
+      <div className="flex flex-row gap-8 items-center flex-wrap py-4">
+        {carColors.map((item, index) => (
+          <div
+            key={index}
+            className={`flex flex-col items-center transition-all duration-400 ${item.color === bodyColor.color ? "cursor-pointer opacity-90" : ""}`}
+            onClick={() => handleColorClick(setBodyColor, item)}
+          >
             <div
-              key={index}
-              className={`item ${item.color === bodyColor.color ? "item--active" : ""}`}
-              onClick={() => handleColorClick(setBodyColor, item)}
-            >
-              <div className="item__dot" style={{ backgroundColor: item.color }} />
-              <div className="item__label">{item.name}</div>
+              className={`w-8 h-8 rounded-full border-2 ${item.color === bodyColor.color ? "border-green-500" : "border-gray-600"}`}
+              style={{ backgroundColor: item.color }}
+            />
+            <div className={`text-center font-bold text-xs ${item.color === bodyColor.color ? "text-green-500" : "text-black"} capitalize`}>
+              {item.name}
             </div>
-          ))}
-        </div>
-
-        <div className="configurator__section__title">Seat Color</div>
-        <div className="configurator__section__values">
-          {carColors.map((item, index) => (
-            <div
-              key={index}
-              className={`item ${item.color === leatherColor.color ? "item--active" : ""}`}
-              onClick={() => handleColorClick(setLeatherColor, item)}
-            >
-              <div className="item__dot" style={{ backgroundColor: item.color }} />
-              <div className="item__label">{item.name}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className="configurator__section__title">Interior Color</div>
-        <div className="configurator__section__values">
-          {carColors.map((item, index) => (
-            <div
-              key={index}
-              className={`item ${item.color === interiorColor.color ? "item--active" : ""}`}
-              onClick={() => handleColorClick(setInteriorColor, item)}
-            >
-              <div className="item__dot" style={{ backgroundColor: item.color }} />
-              <div className="item__label">{item.name}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className="configurator__section__title">Backlight Color</div>
-        <div className="configurator__section__values">
-          {backlightColors.map((item, index) => (
-            <div
-              key={index}
-              className={`item ${item.color === backlightColor.color ? "item--active" : ""}`}
-              onClick={() => handleColorClick(setBacklightColor, item)}
-            >
-              <div className="item__dot" style={{ backgroundColor: item.color }} />
-              <div className="item__label">{item.name}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className="configurator__section__title">Tail Wing Colour</div>
-        <div className="configurator__section__values">
-          {carColors.map((item, index) => (
-            <div
-              key={index}
-              className={`item ${item.color === tailColor.color ? "item--active" : ""}`}
-              onClick={() => handleColorClick(setTailColor, item)}
-            >
-              <div className="item__dot" style={{ backgroundColor: item.color }} />
-              <div className="item__label">{item.name}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className="configurator__section__title">Glass Type</div> 
-        <div className="configurator__section__values">
-          {glassColors.map((item, index) => (
-            <div
-              key={index}
-              className={`item ${item.color === glassColor.color ? "item--active" : ""}`}
-              onClick={() => handleColorClick(setGlassColor, item)}
-            >
-              <div className="item__dot" style={{ backgroundColor: item.color }} />
-              <div className="item__label">{item.name}</div>
-            </div>
-          ))}
-        </div> 
-
-        <div className="configurator__section__title">Steering Wheel Color</div>
-        <div className="configurator__section__values">
-          {steeringColors.map((item, index) => (
-            <div
-              key={index}
-              className={`item ${item.color === steeringWheelColor.color ? "item--active" : ""}`}
-              onClick={() => handleColorClick(setSteeringWheelColor, item)}
-            >
-              <div className="item__dot" style={{ backgroundColor: item.color }} />
-              <div className="item__label">{item.name}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className="configurator__section__title">Tire Color</div>
-        <div className="configurator__section__values">
-          {wheelColors.map((item, index) => (
-            <div
-              key={index}
-              className={`item ${item.color === tireColor.color ? "item--active" : ""}`}
-              onClick={() => handleColorClick(setTireColor, item)}
-            >
-              <div className="item__dot" style={{ backgroundColor: item.color }} />
-              <div className="item__label">{item.name}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className="configurator__section__title">Tire</div>
-        <div className="configurator__section__values">
-          <button 
-            onClick={() => setShowTires(true)}
-            style={{ 
-              backgroundImage: `url(${tireImage.src})`, 
-              backgroundSize: 'cover', 
-              width: '125px', 
-              height: '100px' 
-            }}
-          />
-          <button 
-            onClick={() => setShowTires(false)}
-            style={{ 
-              backgroundImage: `url(${notireImage.src})`, 
-              backgroundSize: 'cover', 
-              width: '125px', 
-              height: '100px' 
-            }}
-          />
-        </div>
-
-        <div className="configurator__section__title">Tail</div>
-        <div className="configurator__section__values">
-          <button 
-            onClick={() => setShowTail(true)}
-            style={{ 
-              backgroundImage: `url(${tailImage.src})`, 
-              backgroundSize: 'cover', 
-              width: '125px', 
-              height: '100px' 
-            }}
-          />
-          <button 
-            onClick={() => setShowTail(false)}
-            style={{ 
-              backgroundImage: `url(${notailImage.src})`, 
-              backgroundSize: 'cover', 
-              width: '125px', 
-              height: '100px' 
-            }}
-          />
-        </div>
-
-        <div className="configurator__section__title">Brake Design</div>
-        <div className="configurator__section__values">
-          <button 
-            onClick={() => setBrakeDesign(1)} 
-            style={{ 
-              backgroundImage: `url(${brake1Image.src})`, 
-              backgroundSize: 'cover', 
-              width: '125px', 
-              height: '100px' 
-            }}
-          />
-          <button 
-            onClick={() => setBrakeDesign(2)} 
-            style={{ 
-              backgroundImage: `url(${brake2Image.src})`, 
-              backgroundSize: 'cover', 
-              width: '125px', 
-              height: '100px' 
-            }}
-          />
-        </div>
-
+          </div>
+        ))}
       </div>
+
+      <div className="uppercase font-bold font-poppins text-black">Seat Color</div>
+      <div className="flex flex-row gap-8 items-center flex-wrap py-4">
+        {carColors.map((item, index) => (
+          <div
+            key={index}
+            className={`flex flex-col items-center transition-all duration-400 ${item.color === leatherColor.color ? "cursor-pointer opacity-90" : ""}`}
+            onClick={() => handleColorClick(setLeatherColor, item)}
+          >
+            <div
+              className={`w-8 h-8 rounded-full border-2 ${item.color === leatherColor.color ? "border-green-500" : "border-gray-600"}`}
+              style={{ backgroundColor: item.color }}
+            />
+            <div className={`text-center font-bold text-xs ${item.color === leatherColor.color ? "text-green-500" : "text-black"} capitalize`}>
+              {item.name}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="uppercase font-bold font-poppins text-black">Interior Color</div>
+      <div className="flex flex-row gap-8 items-center flex-wrap py-4">
+        {carColors.map((item, index) => (
+          <div
+            key={index}
+            className={`flex flex-col items-center transition-all duration-400 ${item.color === interiorColor.color ? "cursor-pointer opacity-90" : ""}`}
+            onClick={() => handleColorClick(setInteriorColor, item)}
+          >
+            <div
+              className={`w-8 h-8 rounded-full border-2 ${item.color === interiorColor.color ? "border-green-500" : "border-gray-600"}`}
+              style={{ backgroundColor: item.color }}
+            />
+            <div className={`text-center font-bold text-xs ${item.color === interiorColor.color ? "text-green-500" : "text-black"} capitalize`}>
+              {item.name}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="uppercase font-bold font-poppins text-black">Backlight Color</div>
+      <div className="flex flex-row gap-8 items-center flex-wrap py-4">
+        {backlightColors.map((item, index) => (
+          <div
+            key={index}
+            className={`flex flex-col items-center transition-all duration-400 ${item.color === backlightColor.color ? "cursor-pointer opacity-90" : ""}`}
+            onClick={() => handleColorClick(setBacklightColor, item)}
+          >
+            <div
+              className={`w-8 h-8 rounded-full border-2 ${item.color === backlightColor.color ? "border-green-500" : "border-gray-600"}`}
+              style={{ backgroundColor: item.color }}
+            />
+            <div className={`text-center font-bold text-xs ${item.color === backlightColor.color ? "text-green-500" : "text-black"} capitalize`}>
+              {item.name}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="uppercase font-bold font-poppins text-black">Tail Wing Colour</div>
+      <div className="flex flex-row gap-8 items-center flex-wrap py-4">
+        {carColors.map((item, index) => (
+          <div
+            key={index}
+            className={`flex flex-col items-center transition-all duration-400 ${item.color === tailColor.color ? "cursor-pointer opacity-90" : ""}`}
+            onClick={() => handleColorClick(setTailColor, item)}
+          >
+            <div
+              className={`w-8 h-8 rounded-full border-2 ${item.color === tailColor.color ? "border-green-500" : "border-gray-600"}`}
+              style={{ backgroundColor: item.color }}
+            />
+            <div className={`text-center font-bold text-xs ${item.color === tailColor.color ? "text-green-500" : "text-black"} capitalize`}>
+              {item.name}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="uppercase font-bold font-poppins text-black">Glass Type</div>
+      <div className="flex flex-row gap-8 items-center flex-wrap py-4">
+        {glassColors.map((item, index) => (
+          <div
+            key={index}
+            className={`flex flex-col items-center transition-all duration-400 ${item.color === glassColor.color ? "cursor-pointer opacity-90" : ""}`}
+            onClick={() => handleColorClick(setGlassColor, item)}
+          >
+            <div
+              className={`w-8 h-8 rounded-full border-2 ${item.color === glassColor.color ? "border-green-500" : "border-gray-600"}`}
+              style={{ backgroundColor: item.color }}
+            />
+            <div className={`text-center font-bold text-xs ${item.color === glassColor.color ? "text-green-500" : "text-black"} capitalize`}>
+              {item.name}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="uppercase font-bold font-poppins text-black">Steering Wheel Color</div>
+      <div className="flex flex-row gap-8 items-center flex-wrap py-4">
+        {steeringColors.map((item, index) => (
+          <div
+            key={index}
+            className={`flex flex-col items-center transition-all duration-400 ${item.color === steeringWheelColor.color ? "cursor-pointer opacity-90" : ""}`}
+            onClick={() => handleColorClick(setSteeringWheelColor, item)}
+          >
+            <div
+              className={`w-8 h-8 rounded-full border-2 ${item.color === steeringWheelColor.color ? "border-green-500" : "border-gray-600"}`}
+              style={{ backgroundColor: item.color }}
+            />
+            <div className={`text-center font-bold text-xs ${item.color === steeringWheelColor.color ? "text-green-500" : "text-black"} capitalize`}>
+              {item.name}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="uppercase font-bold font-poppins text-black">Tire Color</div>
+      <div className="flex flex-row gap-8 items-center flex-wrap py-4">
+        {wheelColors.map((item, index) => (
+          <div
+            key={index}
+            className={`flex flex-col items-center transition-all duration-400 ${item.color === tireColor.color ? "cursor-pointer opacity-90" : ""}`}
+            onClick={() => handleColorClick(setTireColor, item)}
+          >
+            <div
+              className={`w-8 h-8 rounded-full border-2 ${item.color === tireColor.color ? "border-green-500" : "border-gray-600"}`}
+              style={{ backgroundColor: item.color }}
+            />
+            <div className={`text-center font-bold text-xs ${item.color === tireColor.color ? "text-green-500" : "text-black"} capitalize`}>
+              {item.name}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="uppercase font-bold font-poppins text-black">Tire</div>
+<div className="flex flex-row gap-8 items-center flex-wrap py-4">
+  <button 
+    onClick={() => setShowTires(true)}
+    className="w-32 h-32 bg-no-repeat bg-center transition-all duration-400 cursor-pointer hover:opacity-90"
+    style={{ backgroundImage: `url(${tireImage.src})`, backgroundSize: 'contain' }}
+  ></button>
+  <button 
+    onClick={() => setShowTires(false)}
+    className="w-32 h-32 bg-no-repeat bg-center transition-all duration-400 cursor-pointer hover:opacity-90"
+    style={{ backgroundImage: `url(${notireImage.src})`, backgroundSize: 'contain' }}
+  ></button>
+</div>
+
+
+      <div className="uppercase font-bold font-poppins text-black">Tail</div>
+<div className="flex flex-row gap-8 items-center flex-wrap py-4">
+  <button 
+    onClick={() => setShowTail(true)}
+    className="w-32 h-32 bg-no-repeat bg-center transition-all duration-400 cursor-pointer hover:opacity-90"
+    style={{ backgroundImage: `url(${tailImage.src})`, backgroundSize: 'contain' }}
+  />
+  <button 
+    onClick={() => setShowTail(false)}
+    className="w-32 h-32 bg-no-repeat bg-center transition-all duration-400 cursor-pointer hover:opacity-90"
+    style={{ backgroundImage: `url(${notailImage.src})`, backgroundSize: 'contain' }}
+  />
+</div>
+
+
+      <div className="uppercase font-bold font-poppins text-black">Brake Design</div>
+      <div className="flex flex-row gap-8 items-center flex-wrap py-4">
+        <button 
+          onClick={() => setBrakeDesign(1)} 
+          className="w-32 h-32 bg-cover transition-all duration-400 cursor-pointer hover:opacity-90"
+          style={{ backgroundImage: `url(${brake1Image.src})`, backgroundSize: 'contain' }}
+        />
+        <button 
+          onClick={() => setBrakeDesign(2)} 
+          className="w-32 h-32 bg-cover transition-all duration-400 cursor-pointer hover:opacity-90"
+          style={{ backgroundImage: `url(${brake2Image.src})`, backgroundSize: 'contain' }}
+        />
+      </div>
+
     </div>
   );
 };

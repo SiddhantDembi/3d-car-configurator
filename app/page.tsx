@@ -7,7 +7,7 @@ import { Canvas } from "@react-three/fiber";
 export default function Home() {
   return (
     <CustomizationProvider>
-      <div className="App">
+      <div className="w-screen h-screen select-none flex justify-between">
         <Canvas dpr={[1, 2]}>
           <color attach="background" args={["#FFFFFF"]} />
           <Experience />
