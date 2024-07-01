@@ -203,7 +203,6 @@ const Configurator: React.FC = () => {
   ></button>
 </div>
 
-
       <div className="uppercase font-bold font-poppins text-black">Tail</div>
 <div className="flex flex-row gap-8 items-center flex-wrap py-4">
   <button 
@@ -217,7 +216,6 @@ const Configurator: React.FC = () => {
     style={{ backgroundImage: `url(${notailImage.src})`, backgroundSize: 'contain' }}
   />
 </div>
-
 
       <div className="uppercase font-bold font-poppins text-black">Brake Design</div>
       <div className="flex flex-row gap-8 items-center flex-wrap py-4">

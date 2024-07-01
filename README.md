@@ -43,5 +43,5 @@ npm start
 
 ## Demo
 
-https://github.com/SiddhantDembi/car3d/assets/106478699/c60abb37-9dd3-4f55-9bfe-5c0e5ed07d29
+https://github.com/SiddhantDembi/car3dnext/assets/106478699/01a63843-6d7d-40a8-8f51-8722f805f5a6
 
