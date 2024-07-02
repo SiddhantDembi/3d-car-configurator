@@ -42,7 +42,7 @@ const Configurator: React.FC = () => {
         {carColors.map((item, index) => (
           <div
             key={index}
-            className={`flex flex-col items-center transition-all duration-400 ${item.color === bodyColor.color ? "cursor-pointer opacity-90" : ""}`}
+            className={`flex flex-col items-center transition-all duration-400 cursor-pointer ${item.color === bodyColor.color ? "cursor-pointer opacity-90" : ""}`}
             onClick={() => handleColorClick(setBodyColor, item)}
           >
             <div
@@ -61,7 +61,7 @@ const Configurator: React.FC = () => {
         {carColors.map((item, index) => (
           <div
             key={index}
-            className={`flex flex-col items-center transition-all duration-400 ${item.color === leatherColor.color ? "cursor-pointer opacity-90" : ""}`}
+            className={`flex flex-col items-center transition-all duration-400 cursor-pointer ${item.color === leatherColor.color ? "cursor-pointer opacity-90" : ""}`}
             onClick={() => handleColorClick(setLeatherColor, item)}
           >
             <div
@@ -80,7 +80,7 @@ const Configurator: React.FC = () => {
         {carColors.map((item, index) => (
           <div
             key={index}
-            className={`flex flex-col items-center transition-all duration-400 ${item.color === interiorColor.color ? "cursor-pointer opacity-90" : ""}`}
+            className={`flex flex-col items-center transition-all duration-400 cursor-pointer ${item.color === interiorColor.color ? "cursor-pointer opacity-90" : ""}`}
             onClick={() => handleColorClick(setInteriorColor, item)}
           >
             <div
@@ -99,7 +99,7 @@ const Configurator: React.FC = () => {
         {backlightColors.map((item, index) => (
           <div
             key={index}
-            className={`flex flex-col items-center transition-all duration-400 ${item.color === backlightColor.color ? "cursor-pointer opacity-90" : ""}`}
+            className={`flex flex-col items-center transition-all duration-400 cursor-pointer ${item.color === backlightColor.color ? "cursor-pointer opacity-90" : ""}`}
             onClick={() => handleColorClick(setBacklightColor, item)}
           >
             <div
@@ -118,7 +118,7 @@ const Configurator: React.FC = () => {
         {carColors.map((item, index) => (
           <div
             key={index}
-            className={`flex flex-col items-center transition-all duration-400 ${item.color === tailColor.color ? "cursor-pointer opacity-90" : ""}`}
+            className={`flex flex-col items-center transition-all duration-400 cursor-pointer ${item.color === tailColor.color ? "cursor-pointer opacity-90" : ""}`}
             onClick={() => handleColorClick(setTailColor, item)}
           >
             <div
@@ -137,7 +137,7 @@ const Configurator: React.FC = () => {
         {glassColors.map((item, index) => (
           <div
             key={index}
-            className={`flex flex-col items-center transition-all duration-400 ${item.color === glassColor.color ? "cursor-pointer opacity-90" : ""}`}
+            className={`flex flex-col items-center transition-all duration-400 cursor-pointer ${item.color === glassColor.color ? "cursor-pointer opacity-90" : ""}`}
             onClick={() => handleColorClick(setGlassColor, item)}
           >
             <div
@@ -152,30 +152,31 @@ const Configurator: React.FC = () => {
       </div>
 
       <div className="uppercase font-bold font-poppins text-black">Steering Wheel Color</div>
-      <div className="flex flex-row gap-8 items-center flex-wrap py-4">
-        {steeringColors.map((item, index) => (
-          <div
-            key={index}
-            className={`flex flex-col items-center transition-all duration-400 ${item.color === steeringWheelColor.color ? "cursor-pointer opacity-90" : ""}`}
-            onClick={() => handleColorClick(setSteeringWheelColor, item)}
-          >
-            <div
-              className={`w-8 h-8 rounded-full border-2 ${item.color === steeringWheelColor.color ? "border-green-500" : "border-gray-600"}`}
-              style={{ backgroundColor: item.color }}
-            />
-            <div className={`text-center font-bold text-xs ${item.color === steeringWheelColor.color ? "text-green-500" : "text-black"} capitalize`}>
-              {item.name}
-            </div>
-          </div>
-        ))}
+<div className="flex flex-row gap-8 items-center flex-wrap py-4">
+  {steeringColors.map((item, index) => (
+    <div
+      key={index}
+      className={`flex flex-col items-center transition-all duration-400 cursor-pointer ${item.color === steeringWheelColor.color ? "opacity-90" : ""}`}
+      onClick={() => handleColorClick(setSteeringWheelColor, item)}
+    >
+      <div
+        className={`w-8 h-8 rounded-full border-2 ${item.color === steeringWheelColor.color ? "border-green-500" : "border-gray-600"}`}
+        style={{ backgroundColor: item.color }}
+      />
+      <div className={`text-center font-bold text-xs ${item.color === steeringWheelColor.color ? "text-green-500" : "text-black"} capitalize`}>
+        {item.name}
       </div>
+    </div>
+  ))}
+</div>
+
 
       <div className="uppercase font-bold font-poppins text-black">Tire Color</div>
       <div className="flex flex-row gap-8 items-center flex-wrap py-4">
         {wheelColors.map((item, index) => (
           <div
             key={index}
-            className={`flex flex-col items-center transition-all duration-400 ${item.color === tireColor.color ? "cursor-pointer opacity-90" : ""}`}
+            className={`flex flex-col items-center transition-all duration-400 cursor-pointer ${item.color === tireColor.color ? "cursor-pointer opacity-90" : ""}`}
             onClick={() => handleColorClick(setTireColor, item)}
           >
             <div
