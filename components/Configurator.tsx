@@ -20,10 +20,10 @@ const Configurator: React.FC = () => {
     tireColor, setTireColor,
     leatherColor, setLeatherColor,
     interiorColor, setInteriorColor,
-    showTires, setShowTires,
-    showTail, setShowTail,
     backlightColor, setBacklightColor,
     tailColor, setTailColor,
+    setShowTires,
+    setShowTail,
     setBrakeDesign
   } = useCustomization();
 
