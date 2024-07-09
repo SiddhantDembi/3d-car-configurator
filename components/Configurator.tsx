@@ -35,7 +35,7 @@ const Configurator: React.FC = () => {
   };
 
   return (
-    <div className="fixed right-0 bottom-[10vh] w-[400px] p-6 flex flex-col gap-4 max-h-[83vh] overflow-y-auto">
+    <div className="lg:fixed right-0 bottom-[10vh] w-[400px] p-6 flex flex-col gap-4 max-h-[83vh] overflow-y-auto">
 
       <div className="uppercase font-bold font-poppins text-black">Body Color</div>
       <div className="flex flex-row gap-8 items-center flex-wrap py-4">
